@@ -8230,7 +8230,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1927152847, guid: a66871118c8e8e94fa865dd886f53b93, type: 3}
       propertyPath: speed
-      value: 10
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8953516106687858915, guid: a66871118c8e8e94fa865dd886f53b93,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a66871118c8e8e94fa865dd886f53b93, type: 3}
@@ -13004,8 +13009,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpotsInTriggerReference: {fileID: 1440092349}
   Spots: []
-  BadSpawnTimeInterval: 1.5
-  TreesOnStart: 33
+  populatedGoodSpotList: []
+  badSpawnTimeInterval: 1
+  badSpawnSpeed: 0
+  LevelInterval: 4
+  TreesOnStart: 120
 --- !u!114 &1603289930
 MonoBehaviour:
   m_ObjectHideFlags: 0
