@@ -24,9 +24,12 @@ public class MouseOverObject : MonoBehaviour
         {
             if (child.gameObject.activeInHierarchy == true)
             {
-                Renderer childRenderer = child.GetComponent<Renderer>();
-                childRenderer.material.color = new Color(startColor.r, startColor.g, startColor.b, transperancy);
-                globalChildRenderer = childRenderer;
+                if (child.GetComponent<Renderer>() != null)
+                {
+                    Renderer childRenderer = child.GetComponent<Renderer>();
+                    childRenderer.material.color = new Color(startColor.r, startColor.g, startColor.b, transperancy);
+                    globalChildRenderer = childRenderer;
+                }
             }
         }
     }

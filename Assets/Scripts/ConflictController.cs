@@ -10,7 +10,7 @@ public class ConflictController : MonoBehaviour
     public void Start()
     {
         HP = 1;
-        startColor = GetComponent<Renderer>().material.color;
+        startColor = GetComponentInChildren<Renderer>().material.color;
     }
 
     public void setHP(int damage)
