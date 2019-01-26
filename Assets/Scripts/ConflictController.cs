@@ -5,26 +5,12 @@ using UnityEngine;
 public class ConflictController : MonoBehaviour
 {
     public int HP;
-    private Ray ray;
-    private RaycastHit hit;
     private Color startColor;
 
     public void Start()
     {
-        HP = 100;
+        HP = 1;
         startColor = GetComponent<Renderer>().material.color;
-    }
-    
-    public void Update()
-    { 
-        if (Input.GetButtonDown("Fire1"))
-        { 
-            ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit))
-            {
-                print(hit.collider.name);
-            }
-        } 
     }
 
     public void setHP(int damage)
@@ -35,7 +21,7 @@ public class ConflictController : MonoBehaviour
         }
         if (HP <= 0)
         {
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
         }
     }
 
@@ -44,15 +30,15 @@ public class ConflictController : MonoBehaviour
         return HP;
     }
 
-    private void OnMouseEnter()
-    {
-        GetComponent<Renderer>().material.color = Color.cyan;
-    }
+    //private void OnMouseOver()
+    //{
+    //    GetComponent<Renderer>().material.color = Color.cyan;
+    //    print("Entered");
+    //}
 
-    private void OnMouseExit()
-    {
-        GetComponent<Renderer>().material.color = startColor;
-    }
+    //private void OnMouseExit()
+    //{
+    //    GetComponent<Renderer>().material.color = startColor;
+    //    print("Exited");
+    //}
 }
-
-
