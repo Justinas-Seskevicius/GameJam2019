@@ -14,7 +14,7 @@ public class GameController : MonoBehaviour
     public float badSpawnTimeInterval = 1f;
     public float badSpawnSpeed;
     public float LevelInterval = 2f;
-    public int TreesOnStart;
+    public int TreesOnStart = 120;
 
     private float badSpawnInterval = 0;
     private float LevelTimer;
