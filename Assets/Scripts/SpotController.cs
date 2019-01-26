@@ -45,6 +45,15 @@ public class SpotController : MonoBehaviour, OnRightClick, OnLeftClick
         }
     }
 
+    public void DisableTrees()
+    {
+        if (CurrentlyEnabled == Trees)
+        {
+            Trees.gameObject.SetActive(false);
+            CurrentlyEnabled = null;
+        }
+    }
+
     public void EnableFactory(bool value)
     {
         if (CurrentlyEnabled == null)
