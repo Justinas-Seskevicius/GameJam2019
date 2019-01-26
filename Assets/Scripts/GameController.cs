@@ -10,10 +10,15 @@ public class GameController : MonoBehaviour
     public GameController Instance { get; private set; }
     public SpotsInTrigger SpotsInTriggerReference;
     public List<SpotController> Spots;
-    public float BadSpawnTimeInterval = 1f;
-    public int TreesOnStart = 5;
+    public List<SpotController> populatedGoodSpotList;
+    public float badSpawnTimeInterval = 1f;
+    public float badSpawnSpeed;
+    public float LevelInterval = 2f;
+    public int TreesOnStart = 120;
 
-    private float BadSpawnInterval = 0;
+    private float badSpawnInterval = 0;
+    private float LevelTimer;
+    private int random;
 
     public static Stichija CurrentlySelectedStichija = Stichija.Nothing;
 
@@ -29,43 +34,50 @@ public class GameController : MonoBehaviour
             return;
         }
 
-        // Get all spots in the game that can be used
+        InitialSpawn();
+    }
+
+    public List<SpotController> getEmptySpots()
+    {
         foreach (SpotController ctrl in GameObject.FindObjectsOfType<SpotController>())
         {
-            if (!Spots.Contains(ctrl))
+            if (ctrl.CurrentlyEnabled)
+            {
+                Spots.Remove(ctrl);
+            }
+            else if (!Spots.Contains(ctrl) && !ctrl.CurrentlyEnabled)
             {
                 Spots.Add(ctrl);
             }
         }
-
-        // Spawn initial objects at the start of the game
-        SpawnInitial();
+        return Spots;
     }
 
-    void SpawnInitial()
+    public List<SpotController> getPopulatedGoodSpots()
     {
-
-        SpotController[] a = GameObject.FindObjectsOfType<SpotController>();
-        List<SpotController> spots = new List<SpotController>();
-
-        foreach (SpotController spt in a)
+        foreach (SpotController ctrl in GameObject.FindObjectsOfType<SpotController>())
         {
-            spots.Add(spt);
-        }
-
-        for (int i = 0; i < TreesOnStart; i++)
-        {
-            if (spots.Count > 0)
+            if (ctrl.Trees)
             {
-                ShuffleList(spots);
-                if (spots[0].CurrentlyEnabled == null)
-                {
-                    spots[0].EnableTrees(true);
-                    spots.Remove(spots[0]);
-                }
+                populatedGoodSpotList.Add(ctrl);
             }
         }
+        return populatedGoodSpotList;
+    }
 
+    void InitialSpawn()
+    {
+        List<SpotController> emptySpotList = getEmptySpots();
+
+        for (int i = 0; i < TreesOnStart; i++)  
+        {
+            random = Random.Range(0, emptySpotList.Count);
+            if (emptySpotList[random].CurrentlyEnabled == null)
+            {
+                emptySpotList[random].EnableTrees(true);
+                emptySpotList.RemoveAt(random);
+            }
+        }
     }
 
     /// <summary>
@@ -87,18 +99,47 @@ public class GameController : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        BadSpawnInterval += Time.deltaTime;
 
-        if (BadSpawnTimeInterval <= BadSpawnInterval)
+
+
+
+
+
+
+
+
+    void Update()
+    { 
+        getEmptySpots();
+
+        badSpawnInterval += Time.deltaTime * badSpawnSpeed;
+        LevelTimer += Time.deltaTime;
+
+        if (badSpawnTimeInterval <= badSpawnInterval)
         {
-            SpawnBadThing();
-            BadSpawnInterval = 0;
+            spawnBadThing();
+            badSpawnInterval = 0;
+        }
+
+        if (LevelTimer >= LevelInterval) 
+        {
+            badSpawnSpeed += Time.deltaTime * 25f;
+            LevelTimer = 0;
+        }
+
+        if (getEmptySpots().Count <= 20)
+        {
+            disableRandomGoodSpot();
         }
     }
 
-    void SpawnBadThing()
+    void disableRandomGoodSpot()
+    {
+        List<SpotController> treesEnabled = getPopulatedGoodSpots();
+        treesEnabled[Random.Range(0, treesEnabled.Count)].DisableTrees();
+    }
+
+    void spawnBadThing()
     {
         ShuffleList(SpotsInTriggerReference.SpotsInRange);
 
