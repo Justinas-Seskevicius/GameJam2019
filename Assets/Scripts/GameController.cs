@@ -106,7 +106,7 @@ public class GameController : MonoBehaviour
         {
             if (ctrl.CurrentlyEnabled == null)
             {
-                int r = Random.Range(0, 3);
+                int r = Random.Range(0, 4);
 
                 switch (r)
                 {
@@ -120,6 +120,10 @@ public class GameController : MonoBehaviour
 
                     case 3:
                         ctrl.EnableCutTrees(true);
+                        break;
+
+                    case 0:
+                        ctrl.EnableApartments(true);
                         break;
 
                     default:

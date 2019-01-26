@@ -223,6 +223,9 @@ GameObject:
   - component: {fileID: 3833012571347235185}
   - component: {fileID: 3833012571350659411}
   - component: {fileID: 3833012571349660563}
+  - component: {fileID: 8347730585276570865}
+  - component: {fileID: 2693708349628752083}
+  - component: {fileID: 8779559208409088999}
   m_Layer: 0
   m_Name: Apartment
   m_TagString: Untagged
@@ -289,6 +292,52 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &8347730585276570865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3833012571347463505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da19e4e4066b057419c72c2c257c7d80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: 0
+--- !u!114 &2693708349628752083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3833012571347463505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c9d0a77ab7e5aa4bab4e0bf7a0e9e96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DeselectAllStichijos: {fileID: 11400000, guid: 785cdfb6b5485844fb51b523d29f0d9b,
+    type: 2}
+--- !u!95 &8779559208409088999
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3833012571347463505}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &1854850905516007020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -539,7 +588,6 @@ GameObject:
   - component: {fileID: 7090222372293353729}
   - component: {fileID: 7090222372293353730}
   - component: {fileID: 7090222372293353758}
-  - component: {fileID: 724244786352377070}
   m_Layer: 0
   m_Name: ObjectSpot
   m_TagString: Spot
@@ -597,20 +645,8 @@ MonoBehaviour:
   Fire: {fileID: 2565820439089978165}
   CutTrees: {fileID: 7025960053882338139}
   Trash: {fileID: 5635910534540086657}
+  Apartment: {fileID: 3833012571347463505}
   CurrentlyEnabled: {fileID: 0}
---- !u!114 &724244786352377070
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7090222372293353733}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6247e164d312a154faaab46ca6f054f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transperancy: 0.411
 --- !u!1001 &5133711191901175973
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -712,15 +748,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5133711191901175973}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &5133711192580557323 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1770097326, guid: e1d11344602b6cb43ad0cdc9538d6e05,
-    type: 3}
-  m_PrefabInstance: {fileID: 5133711191901175973}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5133711192580557321 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1770097324, guid: e1d11344602b6cb43ad0cdc9538d6e05,
+    type: 3}
+  m_PrefabInstance: {fileID: 5133711191901175973}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5133711192580557323 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1770097326, guid: e1d11344602b6cb43ad0cdc9538d6e05,
     type: 3}
   m_PrefabInstance: {fileID: 5133711191901175973}
   m_PrefabAsset: {fileID: 0}

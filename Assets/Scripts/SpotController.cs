@@ -10,6 +10,7 @@ public class SpotController : MonoBehaviour, OnRightClick, OnLeftClick
     public GameObject Fire;
     public GameObject CutTrees;
     public GameObject Trash;
+    public GameObject Apartment;
 
     public GameObject CurrentlyEnabled;
 
@@ -40,8 +41,17 @@ public class SpotController : MonoBehaviour, OnRightClick, OnLeftClick
     {
         if (CurrentlyEnabled == null)
         {
-            Trees.gameObject.SetActive(value);
+            Trees.SetActive(value);
             CurrentlyEnabled = Trees;
+        }
+    }
+
+    public void EnableApartments(bool value)
+    {
+        if (CurrentlyEnabled == null)
+        {
+            Apartment.SetActive(value);
+            CurrentlyEnabled = Apartment;
         }
     }
 
@@ -49,21 +59,21 @@ public class SpotController : MonoBehaviour, OnRightClick, OnLeftClick
     {
         if (CurrentlyEnabled == null)
         {
-            Factory.gameObject.SetActive(value);
+            Factory.SetActive(value);
             CurrentlyEnabled = Factory;
         }
     }
 
     public void EnableFire(bool value)
     {
-            Fire.gameObject.SetActive(value);
+            Fire.SetActive(value);
     }
 
     public void EnableCutTrees(bool value)
     {
         if (CurrentlyEnabled == null)
         {
-            CutTrees.gameObject.SetActive(value);
+            CutTrees.SetActive(value);
             CurrentlyEnabled = CutTrees;
         }
     }
@@ -72,7 +82,7 @@ public class SpotController : MonoBehaviour, OnRightClick, OnLeftClick
     {
         if (CurrentlyEnabled == null)
         {
-            Trash.gameObject.SetActive(value);
+            Trash.SetActive(value);
             CurrentlyEnabled = Trash;
         }
     }
